@@ -1,0 +1,145 @@
+<!-- Создать функцию, генерирующую шахматную доску. 
+    При этом можно использовать любые html-теги по своему желанию. 
+    Доска должна быть разлинована соответствующим образом, т.е. чередовать черные и белые ячейки. 
+    Строки должны нумероваться числами от 1 до 8, столбцы – латинскими буквами A, B, C, D, E, F, G, H. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var table = document.createElement("table");
+        var tr, td;
+        var letters = " hgfedcba ";
+        for (var i = 9; i >= 0; i--) { //rows
+            tr = document.createElement("tr");
+            table.appendChild(tr);
+            for (var j = 9; j >= 0; j--) { //columns
+                td = document.createElement("td");
+                if (j == 0 || j == 9) { //write a number in 1 or 10 column
+                    if (i > 0 && i < 9) {
+                        td.innerText = i;
+                    }
+                }
+                if (i == 0 || i == 9) { //write a letter in 1 or 10 row
+                    td.innerText = letters[j];
+                }
+                if (i < 9 && i > 0 && j < 9 && j > 0) {
+                    if (i % 2 == j % 2) {
+                        td.bgColor = "white";
+                        td.innerHTML.Color = "black";
+                    }
+                    else {
+                        td.bgColor = "gray";
+                        td.innerHTML.Color = "white";
+                    }
+                    if (i == 2) {
+                        td.innerHTML = "&#9817;";
+                        td.innerHTML.Color = "white";
+                    }
+                    if (i == 7) {
+                        td.innerHTML = "&#9823;";
+                    }
+                    if (i == 1) {
+                        switch (j) {
+                            case (1): {
+                                td.innerHTML = "&#9814;";
+                                break;
+                            }
+                            case (8): {
+                                td.innerHTML = "&#9814;";
+                                break;
+                            }
+                            case (7): {
+                                td.innerHTML = "&#9816;";
+                                break;
+                            }
+                            case (2): {
+                                td.innerHTML = "&#9816;";
+                                break;
+                            }
+                            case (6): {
+                                td.innerHTML = "&#9815;";
+                                break;
+                            }
+                            case (3): {
+                                td.innerHTML = "&#9815;";
+                                break;
+                            }
+                            case (5): {
+                                td.innerHTML = "&#9813;";
+                                break;
+                            }
+                            case (4): {
+                                td.innerHTML = "&#9812;";
+                                break;
+                            }
+                        }
+                    }
+                    if (i == 8) {
+                        switch (j) {
+                            case (1): {
+                                td.innerHTML = "&#9820;";
+                                break;
+                            }
+                            case (8): {
+                                td.innerHTML = "&#9820;";
+                                break;
+                            }
+                            case (7): {
+                                td.innerHTML = "&#9822;";
+                                break;
+                            }
+                            case (2): {
+                                td.innerHTML = "&#9822;";
+                                break;
+                            }
+                            case (6): {
+                                td.innerHTML = "&#9821;";
+                                break;
+                            }
+                            case (3): {
+                                td.innerHTML = "&#9821;";
+                                break;
+                            }
+                            case (5): {
+                                td.innerHTML = "&#9818;";
+                                break;
+                            }
+                            case (4): {
+                                td.innerHTML = "&#9819;";
+                                break;
+                            }
+                        }
+                    }
+
+
+                }
+                td.style.width = "25px";
+                td.style.height = "25px";
+                td.style.border = "1px solid black";
+                // table.style.alignContent = "center";
+                tr.appendChild(td);
+            }
+        }
+        // table.style.alignContent = "center";
+        // var textAlign = document.querySelector("div");
+        // textAlign.style.alignItems = "center";
+        // var textAlign = document.querySelector("td");
+        // textAlign.style.alignItems = "center";
+
+        table.style.border = "1px solid black";
+        document.querySelector("div").appendChild(table);
+    </script>
+
+</body>
+
+</html>
